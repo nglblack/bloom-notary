@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Notary - Mobile Notary Services in Salt Lake City</title>
+    <style>
+        /* Color palette */
+        :root {
+            --deep-green: #2E4E34;
+            --cream: #FDF6F0;
+            --charcoal: #2C2C2C;
+            --soft-gold: #D4AF37;
+            --light-green: #5A7D63;
+        }
+        
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--cream);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+        
+        section {
+            padding: 4rem 2rem;
+        }
+        
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: var(--deep-green);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        /* Hero section */
+        .hero {
+            background-image: linear-gradient(rgba(46, 78, 52, 0.85), rgba(46, 78, 52, 0.85)), url('/hero.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero .tagline {
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        /* About section */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 3;
+        }
+        
+        .about-image {
+            flex: 2;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 50%;
+        }
+        
+        /* Services section */
+        .services {
+            background-color: var(--cream);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-card h3:before {
+            content: "✓";
+            color: var(--deep-green);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+        
+        /* Area section */
+        .area {
+            background-color: white;
+        }
+        
+        .area-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .area-text {
+            flex: 1;
+        }
+        
+        .area-map {
+            flex: 1;
+            height: 300px;
+            background-color: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .area-list {
+            list-style-type: none;
+            margin-top: 1rem;
+        }
+        
+        .area-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .area-list li:before {
+            content: "•";
+            color: var(--deep-green);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Contact section */
+        .contact {
+            background-color: var(--cream);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--deep-green);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--light-green);
+        }
+        
+        /* Hours section */
+        .hours {
+            background-color: white;
+            padding: 2rem;
+        }
+        
+        .hours-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .hours-list {
+            list-style-type: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--deep-green);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        .social-icons {
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .about-content, .area-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Bloom Notary</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Bloom Notary</h1>
+            <p>Mobile Notary Services in Salt Lake City</p>
+            <p class="tagline">Reliable. Professional. Wherever you are.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>Hi, I'm Sarah—owner of Bloom Notary. I'm certified, bonded, and committed to making notarization simple and stress-free. Whether you need help with real estate documents, power of attorney, or general notarizations, I'll come to you—your home, office, or even your favorite coffee shop.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/Headshot.png" alt="Sarah Lopez - Bloom Notary" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>My Services</h2>
+            <p>I offer a range of notary services tailored to your needs:</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>General Notarization</h3>
+                    <p>For affidavits, certified copies, consent forms, and other standard documents requiring notarization.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Loan Signing Agent</h3>
+                    <p>LSA Certified for mortgage documents, refinancing, and other loan-related paperwork.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Real Estate Closings</h3>
+                    <p>Complete guidance through the closing process with all necessary documentation.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Power of Attorney & Wills</h3>
+                    <p>Notarization of important legal documents for you and your family.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>I-9 Verification</h3>
+                    <p>Verification services for employment eligibility documentation.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Remote Online Notarization</h3>
+                    <p>Coming soon - Secure online notarization services from anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Area Section -->
+    <section class="area" id="area">
+        <div class="container">
+            <h2>Service Area</h2>
+            
+            <div class="area-content">
+                <div class="area-text">
+                    <p>Based in Salt Lake City, I proudly serve the following areas:</p>
+                    
+                    <ul class="area-list">
+                        <li>Salt Lake City</li>
+                        <li>Millcreek</li>
+                        <li>West Valley City</li>
+                        <li>Murray</li>
+                        <li>South Salt Lake</li>
+                        <li>Sandy</li>
+                        <li>Holladay</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1rem;"><em>Small travel fee may apply for locations outside this area.</em></p>
+                </div>
+                
+                <div class="area-map">
+                    <img src="/Utah_Service_Area_Bubbles.png" alt="Service Area Map" style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours -->
+    <section class="hours" id="hours">
+        <div class="container">
+            <div class="hours-content">
+                <h2>Business Hours</h2>
+                <ul class="hours-list">
+                    <li><span>Monday - Friday</span> <span>9:00 AM - 6:00 PM</span></li>
+                    <li><span>Saturday</span> <span>10:00 AM - 2:00 PM</span></li>
+                    <li><span>Sunday</span> <span>Closed</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Need a document notarized? Let's make it easy.</p>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+            
+            <p style="margin-top: 1rem; font-style: italic;">You'll get a response within 1 business day.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bloom Notary. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple form handling script -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For this demo, we'll just show an alert
+            alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
+            
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
